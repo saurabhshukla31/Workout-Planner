@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: #252a34;
   color: #08d9d6;
   margin: 0;
@@ -10,7 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-image: url("biceps.jpg");
+  background-image: url("city.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -172,4 +172,30 @@ input:checked + .slider:before {
   #current-day {
     font-size: 2.2em;
   }
+}
+
+.exercise-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.exercise-table th,
+.exercise-table td {
+  border: 1px solid #08d9d6;
+  padding: 10px;
+  text-align: center;
+  color: #08d9d6;
+}
+
+.exercise-table th {
+  background-color: rgba(30, 30, 30, 0.85);
+}
+
+.exercise-table tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.exercise-table tr:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.1);
 }
