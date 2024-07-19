@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: #252a34;
   color: #08d9d6;
   margin: 0;
@@ -16,17 +18,23 @@ body {
 
 .container {
   text-align: center;
-  max-width: 1200px;
+  max-width: 800px;
   width: 95%;
   margin: 20px;
 }
 
 #workout-plan {
-  background-color: rgba(30, 30, 30, 0.9);
+  background-color: rgba(30, 30, 30, 0.85);
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(255, 0, 0, 0.1);
-  padding: 20px;
-  backdrop-filter: blur(5px);
+  box-shadow: 0 10px 30px rgba(255, 0, 0, 0.2);
+  padding: 30px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+#workout-plan:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(255, 0, 0, 0.3);
 }
 
 #workout-plan ul {
@@ -39,17 +47,24 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1em;
+  font-size: 1.1em;
   color: #08d9d6;
   margin-bottom: 15px;
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+#workout-plan li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
 }
 
 .exercise-name {
   flex-grow: 1;
   text-align: left;
+  font-weight: 600;
 }
 
 .set-count,
@@ -59,19 +74,10 @@ body {
   color: #08d9d6;
 }
 
-.set-count {
-  width: 70px;
-  text-align: right;
-}
-
-.rep-count {
-  width: 80px;
-  text-align: right;
-}
-
 #current-day {
-  color: #ff2e63;
-  font-size: 2em;
+  color: #08d9d6;
+  font-size: 2.5em;
+  font-weight: 600;
   margin-bottom: 20px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -103,8 +109,9 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: #08d9d6;
   transition: 0.4s;
+  border-radius: 34px;
 }
 
 .slider:before {
@@ -114,24 +121,17 @@ body {
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: #252a34;
   transition: 0.4s;
+  border-radius: 50%;
 }
 
 input:checked + .slider {
-  background-color: #ff2e63;
+  background-color: #08d9d6;
 }
 
 input:checked + .slider:before {
   transform: translateX(26px);
-}
-
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
 }
 
 @media (max-width: 600px) {
@@ -146,7 +146,7 @@ input:checked + .slider:before {
   }
 
   #workout-plan {
-    padding: 15px;
+    padding: 20px;
     border-radius: 0;
   }
 
@@ -158,38 +158,18 @@ input:checked + .slider:before {
   #current-day {
     font-size: 2em;
   }
-
-  .set-count,
-  .rep-count {
-    width: auto;
-    min-width: 50px;
-  }
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
   #workout-plan {
-    padding: 30px;
+    padding: 25px;
   }
 
   #workout-plan li {
-    font-size: 1.1em;
+    font-size: 1.05em;
   }
 
   #current-day {
     font-size: 2.2em;
-  }
-}
-
-@media (min-width: 901px) {
-  #workout-plan {
-    padding: 40px;
-  }
-
-  #workout-plan li {
-    font-size: 1.2em;
-  }
-
-  #current-day {
-    font-size: 2.5em;
   }
 }
