@@ -1,43 +1,64 @@
 const workouts = {
-  Monday: ["Rest"],
-  Tuesday: [
-    ["Flat DB Press", "4 sets", "10 reps"],
-    ["Machine Chest Press", "3 sets", "12 reps"],
-    ["2-Grip Lat Pulldown", "4 sets", "12 reps"],
-    ["Seated DB Shoulder Press", "3 sets", "10 reps"],
-    ["Seated Cable Row", "4 sets", "12 reps"],
-    ["EZ Bar Skull Crusher", "3 sets", "15 reps"],
-    ["DB Curl", "3 sets", "15 reps"],
-  ],
-  Wednesday: [
-    ["Leg Press", "4 sets", "12 reps"],
-    ["Hack Squat", "4 sets", "10 reps"],
-    ["Seated Hamstring Curl", "3 sets", "15 reps"],
-    ["Standing Calf Raise", "4 sets", "20 reps"],
-    ["Hanging Leg Raise", "3 sets", "20 reps"],
-  ],
-  Thursday: ["Rest"],
-  Friday: [
-    ["Machine Shoulder Press", "4 sets", "10 reps"],
-    ["Flat DB Press", "4 sets", "12 reps"],
-    ["Triceps Pressdown", "3 sets", "15 reps"],
-    ["Close-Grip Push Up", "3 sets", "Failure"],
-    ["DB Lateral Raise", "3 sets", "15 reps"],
-  ],
-  Saturday: [
-    ["Cable Lat Pullover", "3 sets", "15 reps"],
-    ["Weighted Pullup", "4 sets", "8 reps"],
-    ["T Bar Row", "4 sets", "10 reps"],
-    ["DB Curl", "3 sets", "15 reps"],
-    ["Reverse Pec Dec", "3 sets", "15 reps"],
-  ],
-  Sunday: [
-    ["Romanian Deadlift", "4 sets", "10 reps"],
-    ["Leg Press", "4 sets", "12 reps"],
-    ["Leg Extension", "3 sets", "15 reps"],
-    ["Seated Calf Raise", "4 sets", "20 reps"],
-    ["Cable Crunch", "3 sets", "20 reps"],
-  ],
+  Monday: {
+    type: "Rest",
+    exercises: ["Rest"],
+  },
+  Tuesday: {
+    type: "Upper",
+    exercises: [
+      ["Flat DB Press", "3 warmup sets", "1 working sets", "6 reps"],
+      ["Machine Chest Press", "0 warmup set", "1 working sets", "10 reps"],
+      ["2-Grip Lat Pulldown", "2 warmup set", "2 working sets", "12 reps"],
+      ["Seated DB Shoulder Press", "1 warmup set", "3 working sets", "12 reps"],
+      ["Seated Cable Row", "1 warmup set", "2 working sets", "12 reps"],
+      ["EZ Bar Skull Crusher", "1 warmup set", "2 working sets", "15 reps"],
+      ["DB Curl", "1 warmup set", "2 working sets", "15 reps"],
+    ],
+  },
+  Wednesday: {
+    type: "Lower",
+    exercises: [
+      ["Leg Press", "3 warmup sets", "1 working sets", "6 reps"],
+      ["Barbell Squat", "0 warmup set", "1 working sets", "10 reps"],
+      ["Seated Hamstring Curl", "1 warmup set", "1 working sets", "12 reps"],
+      ["Standing Calf Raise", "1 warmup set", "2 working sets", "12 reps"],
+      ["Roman Chair Crunch", "1 warmup set", "2 working sets", "12 reps"],
+    ],
+  },
+  Thursday: {
+    type: "Rest",
+    exercises: ["Rest"],
+  },
+  Friday: {
+    type: "Push",
+    exercises: [
+      ["Machine Shoulder Press", "2 warmup set", "3 working sets", "10 reps"],
+      ["Flat DB Press", "2 warmup set", "2 working sets", "12 reps"],
+      ["Triceps Pressdown", "1 warmup set", "2 working sets", "15 reps"],
+      ["Close-Grip Push Up", "1 warmup set", "1 working sets", "Failure"],
+      ["DB Lateral Raise", "1 warmup set", "2 working sets", "15 reps"],
+    ],
+  },
+  Saturday: {
+    type: "Pull",
+    exercises: [
+      ["Cable Lat Pullover", "1 warmup set", "1 working sets", "12 reps"],
+      ["Lat Pulldown", "2 warmup set", "3 working sets", "8 reps"],
+      ["T Bar Row", "2 warmup set", "2 working sets", "10 reps"],
+      ["DB Curl", "1 warmup set", "2 working sets", "15 reps"],
+      ["Reverse Pec Dec", "1 warmup set", "2 working sets", "12 reps"],
+    ],
+  },
+  Sunday: {
+    type: "Legs",
+    exercises: [
+      ["DB Romanian Deadlift", "2 warmup sets", "2 working sets", "12 reps"],
+      ["Leg Press", "2 warmup set", "3 working sets", "12 reps"],
+      ["Leg Extension", "1 warmup set", "1 working sets", "12 reps"],
+      ["Seated Calf Raise", "1 warmup set", "2 working sets", "15 reps"],
+      ["Plate-Weighted Crunch", "1 warmup set", "2 working sets", "15 reps"],
+    ],
+  },
 };
 
 function getCurrentDay() {
@@ -60,25 +81,32 @@ function displayCurrentDayWorkout() {
 
   const exerciseList = document.createElement("ul");
   exerciseList.classList.add("exercise-list");
-  workouts[currentDay].forEach((exercise) => {
+  workouts[currentDay].exercises.forEach((exercise) => {
     const exerciseItem = document.createElement("li");
     const exerciseName = document.createElement("span");
     exerciseName.classList.add("exercise-name");
     exerciseName.textContent = Array.isArray(exercise) ? exercise[0] : exercise;
-    const setCount = document.createElement("span");
-    setCount.classList.add("set-count");
-    setCount.textContent = Array.isArray(exercise) ? exercise[1] : "";
+
+    const setInfo = document.createElement("span");
+    setInfo.classList.add("set-info");
+    if (Array.isArray(exercise)) {
+      setInfo.textContent = `${exercise[1]}, ${exercise[2]}`;
+    }
+
     const repCount = document.createElement("span");
     repCount.classList.add("rep-count");
-    repCount.textContent = Array.isArray(exercise) ? exercise[2] : "";
+    repCount.textContent = Array.isArray(exercise) ? exercise[3] : "";
+
     exerciseItem.appendChild(exerciseName);
-    exerciseItem.appendChild(setCount);
+    exerciseItem.appendChild(setInfo);
     exerciseItem.appendChild(repCount);
     exerciseList.appendChild(exerciseItem);
   });
 
   workoutPlan.appendChild(exerciseList);
-  document.getElementById("current-day").textContent = currentDay;
+  document.getElementById(
+    "current-day"
+  ).textContent = `${currentDay} : ${workouts[currentDay].type}`;
 }
 
 function displayAllWorkouts() {
@@ -87,26 +115,31 @@ function displayAllWorkouts() {
 
   for (const day in workouts) {
     const dayHeading = document.createElement("h2");
-    dayHeading.textContent = day;
+    dayHeading.textContent = `${day} : ${workouts[day].type}`;
     workoutPlan.appendChild(dayHeading);
 
     const exerciseList = document.createElement("ul");
     exerciseList.classList.add("exercise-list");
-    workouts[day].forEach((exercise) => {
+    workouts[day].exercises.forEach((exercise) => {
       const exerciseItem = document.createElement("li");
       const exerciseName = document.createElement("span");
       exerciseName.classList.add("exercise-name");
       exerciseName.textContent = Array.isArray(exercise)
         ? exercise[0]
         : exercise;
-      const setCount = document.createElement("span");
-      setCount.classList.add("set-count");
-      setCount.textContent = Array.isArray(exercise) ? exercise[1] : "";
+
+      const setInfo = document.createElement("span");
+      setInfo.classList.add("set-info");
+      if (Array.isArray(exercise)) {
+        setInfo.textContent = `${exercise[1]}, ${exercise[2]}`;
+      }
+
       const repCount = document.createElement("span");
       repCount.classList.add("rep-count");
-      repCount.textContent = Array.isArray(exercise) ? exercise[2] : "";
+      repCount.textContent = Array.isArray(exercise) ? exercise[3] : "";
+
       exerciseItem.appendChild(exerciseName);
-      exerciseItem.appendChild(setCount);
+      exerciseItem.appendChild(setInfo);
       exerciseItem.appendChild(repCount);
       exerciseList.appendChild(exerciseItem);
     });
