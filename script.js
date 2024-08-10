@@ -16,13 +16,14 @@ const workouts = {
   Wednesday: {
     form: "Pull",
     exercises: [
-      ["Short Grip Lat Pulldown", "4 sets", "8-12 reps"],
-      ["Wide Grip Lat Pulldown", "4 sets", "8-12 reps"],
-      ["Wide Grip Seated Cable Row", "4 sets", "8-12 reps"],
+      ["Short Grip Lat Pulldown", "3 sets", "8-12 reps"],
+      ["Wide Grip Lat Pulldown", "3 sets", "8-12 reps"],
+      ["Wide Grip Seated Cable Row", "3 sets", "8-12 reps"],
       ["Bicep Grip Seated Cable Row", "3 sets", "10-15 reps"],
+      ["Reverse Pec Deck", "3 sets", "10-15 reps"],
       ["DB Curl", "3 sets", "10-15 reps"],
       ["Preacher Curl", "3 sets", "10-15 reps"],
-      ["DB Shrug", "3 sets", "10-15 reps"],
+      ["Bar Bicep Curl", "3 sets", "10-15 reps"],
     ],
   },
   Thursday: {
