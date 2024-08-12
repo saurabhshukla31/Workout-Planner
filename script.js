@@ -10,7 +10,7 @@ const workouts = {
       ["Lateral Raises", "3 sets", "10-15 reps"],
       ["Front Raises", "3 sets", "10-15 reps"],
       ["Tricep Pressdown", "3 sets", "10-15 reps"],
-      ["Diamond Pushups", "Till Failure"],
+      ["EZ Bar Skull Crusher", "3 sets", "8-12 reps"],
     ],
   },
   Wednesday: {
@@ -48,7 +48,7 @@ const workouts = {
       ["Lateral Raises", "3 sets", "10-15 reps"],
       ["Front Raises", "3 sets", "10-15 reps"],
       ["Tricep Pressdown", "3 sets", "10-15 reps"],
-      ["Diamond Pushups", "Till Failure"],
+      ["EZ Bar Skull Crusher", "3 sets", "8-12 reps"],
     ],
   },
   Saturday: {
