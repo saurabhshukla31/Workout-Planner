@@ -1,79 +1,76 @@
 const workouts = {
   Monday: {
-    form: "Chest & Triceps",
+    form: "Chest & Shoulder & Triceps",
     exercises: [
+      ["Barbell Bench Press", "3 sets"],
+      ["Incline DB Press", "3 sets"],
+      ["DB Shoulder Press", "3 sets"],
       ["Close Grip Pushups", "Till Failure"],
-      ["Barbell Bench Press", "3 sets", "6 reps"],
-      ["DB Incline Press", "3 sets", "8 reps"],
-      ["Pec Deck", "3 sets", "12 reps"],
-      ["Tricep Pressdown", "3 sets", "12 reps"],
-      ["DB Skull Crusher", "3 sets", "12 reps"],
+      ["Pec Deck", "3 sets"],
+      ["Cable Overhead Tricep Extension", "3 sets"],
+      ["Cable Tricep Pressdown", "3 sets"],
+      ["DB Lateral Raises", "3 sets"],
     ],
   },
   Tuesday: {
-    form: "Back & Biceps",
+    form: "Back & Biceps & Rear Delts",
     exercises: [
-      ["Assisted Pullups", "Till Failure"],
-      ["Lat Pulldown", "3 sets", "8 reps"],
-      ["Seated Cable Row", "3 sets", "10 reps"],
-      ["T-bar Row", "3 sets", "12 reps"],
-      ["Seated Dumbbell Curl", "3 sets", "12 reps"],
-      ["Bayesian Cable Curl", "3 sets", "10 reps"],
-      ["Preacher Curl", "3 sets", "10 reps"],
-      ["Hammer Curl", "3 sets", "12 reps"],
+      ["Pullups", "Till Failure"],
+      ["Lat Pulldown", "3 sets"],
+      ["Seated Cable Row", "3 sets"],
+      ["Reverse Pec Deck", "3 sets"],
+      ["Barbell Bicep Curl", "3 sets"],
+      ["Seated Incline Dumbbell Curl", "3 sets"],
+      ["Preacher Curl", "3 sets"],
+      ["Hammer Curl", "3 sets"],
     ],
   },
   Wednesday: {
-    form: "Legs & Shoulders",
+    form: "Legs & Core",
     exercises: [
       ["Squats", "Till Failure"],
-      ["Smith Machine Squat", "3 sets", "10 reps"],
-      ["Leg Press", "3 sets", "12 reps"],
-      ["Leg Extension", "3 sets", "15 reps"],
-      ["Reverse Pec Deck", "3 sets", "10 reps"],
-      ["Machine Shoulder Press", "3 sets", "12 reps"],
-      ["Cable Lateral Raises", "3 sets", "10 reps"],
-      ["Front Raises", "3 sets", "10 reps"],
+      ["Leg Press", "3 sets"],
+      ["Walking Lunges", "3 sets"],
+      ["Leg Extension", "3 sets"],
+      ["Calf Raises", "3 sets"],
+      ["Hanging Leg Raises", "3 sets"],
+      ["Plank", "3 sets"],
     ],
   },
   Thursday: {
-    form: "Chest & Triceps",
-    exercises: [
-      ["Close Grip Pushups", "Till Failure"],
-      ["Barbell Bench Press", "3 sets", "6 reps"],
-      ["DB Incline Press", "3 sets", "8 reps"],
-      ["Pec Deck", "3 sets", "12 reps"],
-      ["Tricep Pressdown", "3 sets", "12 reps"],
-      ["DB Skull Crusher", "3 sets", "12 reps"],
-    ],
+    form: "Cardio",
+    exercises: [],
   },
   Friday: {
-    form: "Back & Biceps",
+    form: "Chest & Back",
     exercises: [
-      ["Assisted Pullups", "Till Failure"],
-      ["Lat Pulldown", "3 sets", "8 reps"],
-      ["Seated Cable Row", "3 sets", "10 reps"],
-      ["T-bar Row", "3 sets", "12 reps"],
-      ["Seated Dumbbell Curl", "3 sets", "12 reps"],
-      ["Bayesian Cable Curl", "3 sets", "10 reps"],
-      ["Preacher Curl", "3 sets", "10 reps"],
-      ["Hammer Curl", "3 sets", "12 reps"],
+      ["Barbell Bench Press", "3 sets"],
+      ["Lat Pulldown", "3 sets"],
+      ["DB Incline Press", "3 sets"],
+      ["T-Bar Row", "3 sets"],
+      ["Pec Deck", "3 sets"],
+      ["Seated Cable Row", "3 sets"],
+      ["Dips", "3 sets"],
     ],
   },
   Saturday: {
-    form: "Legs & Shoulders",
+    form: "Full Arms & Shoulder",
     exercises: [
-      ["Squats", "Till Failure"],
-      ["Smith Machine Squat", "3 sets", "10 reps"],
-      ["Leg Press", "3 sets", "12 reps"],
-      ["Leg Extension", "3 sets", "15 reps"],
-      ["Reverse Pec Deck", "3 sets", "10 reps"],
-      ["Machine Shoulder Press", "3 sets", "12 reps"],
-      ["Cable Lateral Raises", "3 sets", "10 reps"],
-      ["Front Raises", "3 sets", "10 reps"],
+      ["DB Shoulder Press", "3 sets"],
+      ["Cable Overhead Tricep Extension", "3 sets"],
+      ["Barbell Bicep Curl", "3 sets"],
+      ["Cable Tricep Pressdown", "3 sets"],
+      ["DB Lateral Raises", "3 sets"],
+      ["Seated Dumbbell Curl", "3 sets"],
+      ["Preacher Curl", "3 sets"],
+      ["Hammer Curl", "3 sets"],
+      ["Reverse Pec Deck", "3 sets"],
     ],
   },
-  Sunday: { form: "Rest", exercises: [] },
+  Sunday: {
+    form: "Cardio",
+    exercises: [],
+  },
 };
 
 function getCurrentDay() {
@@ -100,20 +97,19 @@ function displayCurrentDayWorkout() {
 
   const exerciseList = document.createElement("ul");
   exerciseList.classList.add("exercise-list");
+
   workouts[currentDay].exercises.forEach((exercise) => {
     const exerciseItem = document.createElement("li");
     const exerciseName = document.createElement("span");
     exerciseName.classList.add("exercise-name");
     exerciseName.textContent = exercise[0];
+
     const setCount = document.createElement("span");
     setCount.classList.add("set-count");
     setCount.textContent = exercise[1] || "";
-    const repCount = document.createElement("span");
-    repCount.classList.add("rep-count");
-    repCount.textContent = exercise[2] || "";
+
     exerciseItem.appendChild(exerciseName);
     exerciseItem.appendChild(setCount);
-    exerciseItem.appendChild(repCount);
     exerciseList.appendChild(exerciseItem);
   });
 
@@ -132,20 +128,19 @@ function displayAllWorkouts() {
 
     const exerciseList = document.createElement("ul");
     exerciseList.classList.add("exercise-list");
+
     workouts[day].exercises.forEach((exercise) => {
       const exerciseItem = document.createElement("li");
       const exerciseName = document.createElement("span");
       exerciseName.classList.add("exercise-name");
       exerciseName.textContent = exercise[0];
+
       const setCount = document.createElement("span");
       setCount.classList.add("set-count");
       setCount.textContent = exercise[1] || "";
-      const repCount = document.createElement("span");
-      repCount.classList.add("rep-count");
-      repCount.textContent = exercise[2] || "";
+
       exerciseItem.appendChild(exerciseName);
       exerciseItem.appendChild(setCount);
-      exerciseItem.appendChild(repCount);
       exerciseList.appendChild(exerciseItem);
     });
 
